@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   useRemoteTimestamp: false,
+  remoteSyncFrequency: 60000,
   currentOffset: 0,
   currentDatetime: null,
   timestampEndpoint: null,
@@ -13,12 +14,13 @@ export default Ember.Service.extend({
 
   _loadConfigAndStartTimers: function() {
     var config = this.container.lookupFactory('config:environment')['countdownOptions'];
-    var remote = config && config.useRemoteTimestamp;
 
-    Ember.set(this, 'useRemoteTimestamp', remote);
-    
     if (config && config.useRemoteTimestamp) {
       Ember.set(this, 'useRemoteTimestamp', config.useRemoteTimestamp);
+    }
+
+    if (config && config.remoteSyncFrequency) {
+      Ember.set(this, 'remoteSyncFrequency', config.remoteSyncFrequency);
     }
 
     if (config && config.timestampEndpoint) {
@@ -37,7 +39,7 @@ export default Ember.Service.extend({
   },
   
   _syncServerLoop: function() {
-    Ember.run.later(this, this._setServerTime, 60000);
+    Ember.run.later(this, this._setServerTime, (Ember.get(this, 'remoteSyncFrequency') * 1000));
   },
   
   _syncLocalLoop: function() {
