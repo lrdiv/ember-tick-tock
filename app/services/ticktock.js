@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
+  now: null,
+  currentOffset: 0,
   useRemoteTimestamp: false,
   remoteSyncFrequency: 60000,
-  currentOffset: 0,
-  currentDatetime: null,
   timestampEndpoint: null,
   timestampProperty: null,
   
@@ -65,14 +65,14 @@ export default Ember.Service.extend({
   },
   
   _setCurrentTime: function() {
-    var currentDatetime = moment().unix();
+    var now = moment().unix();
     
     if (Ember.get(this, 'useRemoteTimestamp')) {
-      currentDatetime += Ember.get(this, 'currentOffset');
+      now += Ember.get(this, 'currentOffset');
     }
 
-    currentDatetime = moment.unix(currentDatetime);
-    Ember.set(this, 'currentDatetime', currentDatetime);
+    currentDatetime = moment.unix(now);
+    Ember.set(this, 'now', now);
 
     this._syncLocalLoop();
   }

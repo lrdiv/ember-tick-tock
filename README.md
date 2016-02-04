@@ -7,10 +7,12 @@ This Ember-CLI add-on provides a `ticktock` service that will keep the current t
 ticktock: Ember.inject.service()
 ```
 
-Then, you will have access to the current datetime (a Moment.js object) by getting the `currentDatetime` computed property in the service
+Then, you will have access to the current time (a Moment.js object) by accessing the `now` computed property in the service
 
 ```javascript
-now: Ember.computed.alias('ticktock.currentDatetime')
+isExpired: Ember.computed('expiresAt', 'ticktock.now', function() {
+  return this.get('expiresAt') <= this.get('ticktock.now');
+}
 ```
 
 Any time-sensitive computed properties can then be bound to `now`.
