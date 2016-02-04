@@ -31,7 +31,7 @@ export default Ember.Service.extend({
       Ember.set(this, 'timestampProperty', config.timestampProperty);
     }
 
-    if (remote) {
+    if (config.useRemoteTimestamp) {
       this._setServerTime();
     }
 

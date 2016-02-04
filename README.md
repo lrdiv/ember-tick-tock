@@ -1,13 +1,17 @@
-# ember-countdown [WIP]
+# ember-tick-tock [WIP]
 
 ## About
-This Ember-CLI add-on provides a `countdown` service that will keep the current time synced in your application. In any component/controller/model/etc you can inject the service with the following line:
+This Ember-CLI add-on provides a `ticktock` service that will keep the current time synced in your application. In any component/controller/model/etc you can inject the service with the following line:
 
-`countdown: Ember.inject.service()`
+```javascript
+ticktock: Ember.inject.service()
+```
 
 Then, you will have access to the current datetime (a Moment.js object) by getting the `currentDatetime` computed property in the service
 
-`now: Ember.computed.alias('countdown.currentDatetime')`
+```javascript
+now: Ember.computed.alias('ticktock.currentDatetime')
+```
 
 Any time-sensitive computed properties can then be bound to `now`.
 
@@ -15,7 +19,7 @@ Any time-sensitive computed properties can then be bound to `now`.
 For some applications, when you cannot rely on the end-user's clock, you may need to use a remote endpoint to get the current time. You can pass an options object in your applications `config/environment.js` file.
 
 ```javascript
-ENV['countdownOptions'] = {
+ENV['ticktockOptions'] = {
   useRemoteTimestamp: true,
   remoteSyncFrequency: 60,
   timestampEndpoint: ENV.apiServer + '/timestamp',
