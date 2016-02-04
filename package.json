@@ -1,6 +1,6 @@
 {
   "name": "ember-tick-tock",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bind computed properties to the current time. Supports remote timestamp syncing.",
   "directories": {
     "doc": "doc",
@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Lawrence R Davis IV",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
