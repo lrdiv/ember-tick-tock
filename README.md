@@ -15,8 +15,6 @@ isExpired: Ember.computed('expiresAt', 'ticktock.now', function() {
 }
 ```
 
-Any time-sensitive computed properties can then be bound to `now`.
-
 ## Options
 For some applications, when you cannot rely on the end-user's clock, you may need to use a remote endpoint to get the current time. You can pass an options object in your applications `config/environment.js` file.
 
