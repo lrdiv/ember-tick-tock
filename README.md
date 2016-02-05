@@ -29,7 +29,7 @@ ENV['ticktockOptions'] = {
 
 * `useRemoteTimestamp`: (Default: `false`) Let the service know to sync with a server
 * `remoteSyncFrequency`: (Default: `60`) How often to ping the server (in seconds) to get an updated timestamp
-  * The service will still update the `currentDatetime` property every second, regardless of this value
+  * The service will still update the `now` property every second, regardless of this value
 * `timestampEndpoint`: (Required if `useRemoteTimestamp` is true) The URL to make a `GET` request to that will return an object that contains a timestamp
 * `timestampProperty`: (Required if `useRemoteTimestamp` is true) The name of the property in the object returned by `timestampEndpoint`
 
