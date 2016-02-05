@@ -1,5 +1,5 @@
 {
-  "name": "ember-countdown",
+  "name": "ember-tick-tock",
   "dependencies": {
     "ember": "1.13.11",
     "ember-cli-shims": "0.0.6",

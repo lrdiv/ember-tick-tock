@@ -71,7 +71,7 @@ export default Ember.Service.extend({
       now += Ember.get(this, 'currentOffset');
     }
 
-    currentDatetime = moment.unix(now);
+    now = moment.unix(now);
     Ember.set(this, 'now', now);
 
     this._syncLocalLoop();

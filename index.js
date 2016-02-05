@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-countdown'
+  name: 'ember-tick-tock'
 };
