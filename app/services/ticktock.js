@@ -4,7 +4,7 @@ export default Ember.Service.extend({
   now: null,
   currentOffset: 0,
   useRemoteTimestamp: false,
-  remoteSyncFrequency: 60000,
+  remoteSyncFrequency: 60,
   timestampEndpoint: null,
   timestampProperty: null,
   
@@ -36,7 +36,8 @@ export default Ember.Service.extend({
   },
   
   _syncServerLoop: function() {
-    Ember.run.later(this, this._setServerTime, (Ember.get(this, 'remoteSyncFrequency') * 1000));
+    var frequency = Ember.get(this, 'remoteSyncFrequency');
+    Ember.run.later(this, this._setServerTime, (frequency * 1000));
   },
   
   _syncLocalLoop: function() {

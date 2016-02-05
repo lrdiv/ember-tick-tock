@@ -1,4 +1,4 @@
-# ember-tick-tock (alpha)
+# ember-tick-tock [beta]
 
 ## About
 This Ember-CLI add-on provides a `ticktock` service that will keep the current time synced in your application. In any component/controller/model/etc you can inject the service with the following line:
