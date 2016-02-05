@@ -15,10 +15,6 @@ export default Ember.Service.extend({
   _loadConfigAndStartTimers: function() {
     var config = this.container.lookupFactory('config:environment')['ticktockOptions'];
 
-    if (config && config.useRemoteTimestamp) {
-      Ember.set(this, 'useRemoteTimestamp', config.useRemoteTimestamp);
-    }
-
     if (config && config.remoteSyncFrequency) {
       Ember.set(this, 'remoteSyncFrequency', config.remoteSyncFrequency);
     }
@@ -31,7 +27,8 @@ export default Ember.Service.extend({
       Ember.set(this, 'timestampProperty', config.timestampProperty);
     }
 
-    if (config.useRemoteTimestamp) {
+    if (config && config.useRemoteTimestamp) {
+      Ember.set(this, 'useRemoteTimestamp', config.useRemoteTimestamp);
       this._setServerTime();
     }
 
