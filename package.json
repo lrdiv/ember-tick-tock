@@ -1,6 +1,6 @@
 {
   "name": "ember-tick-tock",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bind computed properties to the current time. Supports remote timestamp syncing.",
   "directories": {
     "doc": "doc",

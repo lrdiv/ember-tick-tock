@@ -13,7 +13,7 @@ export default Ember.Service.extend({
   },
 
   _loadConfigAndStartTimers: function() {
-    var config = this.container.lookupFactory('config:environment')['countdownOptions'];
+    var config = this.container.lookupFactory('config:environment')['ticktockOptions'];
 
     if (config && config.useRemoteTimestamp) {
       Ember.set(this, 'useRemoteTimestamp', config.useRemoteTimestamp);
