@@ -1,5 +1,9 @@
 # ember-tick-tock [beta]
 
+## Installation
+
+* `ember install ember-tick-tock`
+
 ## About
 This Ember-CLI add-on provides a `ticktock` service that will keep the current time synced in your application. In any component/controller/model/etc you can inject the service with the following line:
 
@@ -32,9 +36,3 @@ ENV['ticktockOptions'] = {
   * The service will still update the `now` property every second, regardless of this value
 * `timestampEndpoint`: (Required if `useRemoteTimestamp` is true) The URL to make a `GET` request to that will return an object that contains a timestamp
 * `timestampProperty`: (Required if `useRemoteTimestamp` is true) The name of the property in the object returned by `timestampEndpoint`
-
-## Installation
-
-* `git clone` this repository
-* `npm install`
-* `bower install`
