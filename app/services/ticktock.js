@@ -8,12 +8,12 @@ export default Ember.Service.extend({
   timestampEndpoint: null,
   timestampProperty: null,
   
-  init: function() {
+  init() {
     this._loadConfigAndStartTimers();
   },
 
-  _loadConfigAndStartTimers: function() {
-    var config = this.container.lookupFactory('config:environment')['ticktockOptions'];
+  _loadConfigAndStartTimers() {
+    let config = this.container.lookupFactory('config:environment')['ticktockOptions'];
 
     if (config && config.remoteSyncFrequency) {
       Ember.set(this, 'remoteSyncFrequency', config.remoteSyncFrequency);
@@ -35,21 +35,21 @@ export default Ember.Service.extend({
     this._setCurrentTime();
   },
   
-  _syncServerLoop: function() {
-    var frequency = Ember.get(this, 'remoteSyncFrequency');
+  _syncServerLoop() {
+    let frequency = Ember.get(this, 'remoteSyncFrequency');
     Ember.run.later(this, this._setServerTime, (frequency * 1000));
   },
   
-  _syncLocalLoop: function() {
+  _syncLocalLoop() {
     Ember.run.later(this, this._setCurrentTime, 1000);
   },
   
-  _setServerTime: function() {
-    var _this = this;
+  _setServerTime() {
+    let _this = this;
 
     Ember.$.ajax(_this.timestampEndpoint, {
       type: 'GET',
-      success: function(data) {
+      success: (data) => {
         var currentServerTime = data[_this.timestampProperty];
         var currentLocalTime  = moment().unix();
         var serverTime        = parseInt(currentServerTime);
@@ -63,7 +63,7 @@ export default Ember.Service.extend({
   },
   
   _setCurrentTime: function() {
-    var now = moment().unix();
+    let now = moment().unix();
     
     if (Ember.get(this, 'useRemoteTimestamp')) {
       now += Ember.get(this, 'currentOffset');
