@@ -42,6 +42,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+  
+  ENV['ticktockOptions'] = {
+    tickTockFrequency: 2
+  };
 
   return ENV;
 };

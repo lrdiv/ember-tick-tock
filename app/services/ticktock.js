@@ -1,10 +1,12 @@
 import Ember from 'ember';
+const { getOwner } = Ember;
 
 export default Ember.Service.extend({
   now: null,
   currentOffset: 0,
   useRemoteTimestamp: false,
   remoteSyncFrequency: 60,
+  tickTockFrequency: 1,
   timestampEndpoint: null,
   timestampProperty: null,
 
@@ -13,10 +15,14 @@ export default Ember.Service.extend({
   },
 
   _loadConfigAndStartTimers() {
-    let config = this.container.lookupFactory('config:environment')['ticktockOptions'];
+    let config = getOwner(this).resolveRegistration('config:environment')['ticktockOptions'];
 
     if (config && config.remoteSyncFrequency) {
       Ember.set(this, 'remoteSyncFrequency', config.remoteSyncFrequency);
+    }
+
+    if (config && config.tickTockFrequency) {
+      Ember.set(this, 'tickTockFrequency', config.tickTockFrequency);
     }
 
     if (config && config.timestampEndpoint) {
@@ -41,7 +47,8 @@ export default Ember.Service.extend({
   },
   
   _syncLocalLoop() {
-    Ember.run.later(this, this._setCurrentTime, 1000);
+    let frequency = Ember.get(this, 'tickTockFrequency');
+    Ember.run.later(this, this._setCurrentTime, (frequency * 1000));
   },
   
   _setServerTime() {

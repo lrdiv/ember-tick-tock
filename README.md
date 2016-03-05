@@ -1,4 +1,4 @@
-# ember-tick-tock [beta]
+# ember-tick-tock
 
 ## Installation
 
@@ -24,13 +24,14 @@ For some applications, when you cannot rely on the end-user's clock, you may nee
 
 ```javascript
 ENV['ticktockOptions'] = {
+  tickTockFrequency: 1,
   useRemoteTimestamp: true,
   remoteSyncFrequency: 60,
   timestampEndpoint: ENV.apiServer + '/timestamp',
   timestampProperty: 'time'
 };
 ```
-
+* `tickTockFrequency`: (Default: `1`) How often (in seconds) should timestamp be updated
 * `useRemoteTimestamp`: (Default: `false`) Let the service know to sync with a server
 * `remoteSyncFrequency`: (Default: `60`) How often to ping the server (in seconds) to get an updated timestamp
   * The service will still update the `now` property every second, regardless of this value
