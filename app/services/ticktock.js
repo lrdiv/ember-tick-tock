@@ -7,7 +7,7 @@ export default Ember.Service.extend({
   remoteSyncFrequency: 60,
   timestampEndpoint: null,
   timestampProperty: null,
-  
+
   init() {
     this._loadConfigAndStartTimers();
   },
