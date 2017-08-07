@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 const { getOwner } = Ember;
 
 export default Ember.Service.extend({
